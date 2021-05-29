@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/sanyam/BE Project/FinalProject/my_model/model.tflearn"
+all_model_checkpoint_paths: "/home/sanyam/BE Project/FinalProject/my_model/model.tflearn"

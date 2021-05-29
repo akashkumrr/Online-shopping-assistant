@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online product shopping</title>
+	<style>
+		.light-gray{
+			background-color: lightgray;
+		}
+
+		ul.navbar-right li a{
+  			color: white;
+		}
+
+		body {font-family: Arial, Helvetica, sans-serif;}
+
+		/* Full-width input fields */
+		input[type=text], input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+		}
+
+		/* Set a style for all buttons */
+		button {
+		background-color: #04AA6D;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		}
+
+		button:hover {
+		opacity: 0.8;
+		}
+
+		/* Extra styles for the cancel button */
+		.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+		}
+
+		/* Center the image and position the close button */
+		.imgcontainer {
+		text-align: center;
+		margin: 24px 0 12px 0;
+		position: relative;
+		}
+
+		img.avatar {
+		width: 40%;
+		border-radius: 50%;
+		}
+
+		.container {
+		padding: 16px;
+		}
+
+		span.psw {
+		float: right;
+		padding-top: 16px;
+		}
+
+		/* The Modal (background) */
+		.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		padding-top: 60px;
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+		background-color: #fefefe;
+		margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+		border: 1px solid #888;
+		width: 80%; /* Could be more or less, depending on screen size */
+		}
+
+		/* The Close Button (x) */
+		.close {
+		position: absolute;
+		right: 25px;
+		top: 0;
+		color: #000;
+		font-size: 35px;
+		font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+		color: red;
+		cursor: pointer;
+		}
+
+		/* Add Zoom Animation */
+		.animate {
+		-webkit-animation: animatezoom 0.6s;
+		animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+		from {-webkit-transform: scale(0)} 
+		to {-webkit-transform: scale(1)}
+		}
+		
+		@keyframes animatezoom {
+		from {transform: scale(0)} 
+		to {transform: scale(1)}
+		}
+
+		/* Change styles for span and cancel button on extra small screens */
+		@media screen and (max-width: 300px) {
+		span.psw {
+			display: block;
+			float: none;
+		}
+		}
+		.wrapper {
+			text-align: center;
+		}
+		.button {
+			position: absolute;
+			top: 50%;
+		}
+	</style>
+</head>
+<body class="light-gray">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link href="bootstrap4-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+	<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+		<a class="navbar-brand" href="#">Online Product Shopping</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+		<ul class="navbar-nav navbar-right">
+			<li class="nav-item">
+				<a href="{{ url_for('login') }}"> Login </a>
+			</li>
+		</ul>
+		</div>
+		</nav>
+		<br><br>
+		<div class="wrapper">
+			<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Click here to login!!</button>
+		</div>
+		<div id="id01" class="modal">
+  
+			<form class="modal-content animate"  method="post">
+				<div class="container">
+				<label for="uname"><b>Email</b></label>
+				<input type="text" placeholder="Enter Email" name="Email" required>
+
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="Password" required>
+					
+				<button type="submit">Login</button>
+				</div>
+
+			</form>
+			</div>
+
+			<script>
+			var modal = document.getElementById('id01');
+
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+			</script>
+	</body>
+</html>

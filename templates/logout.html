@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Logout</title>
+	<style>
+		.light-gray{
+			background-color: lightgray;
+		}
+
+		ul.navbar-right li a{
+  			color: white;
+		}
+
+		h1 {
+            margin: 300px auto;
+            text-align: center;
+            color: black;
+            font-size: 8em;
+            transition: 0.5s;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+  
+        h1:hover {
+            text-shadow: 0 1px 0 #000, 0 2px 0 #000,
+                0 3px 0 #000, 0 4px 0 #000,
+                0 5px 0 #000, 0 6px 0 #000,
+                0 7px 0 #000, 0 8px 0 #000,
+                0 9px 0 #000, 0 10px 0 #000,
+                0 11px 0 #000, 0 12px 0 #000,
+                0 20px 30px rgba(0, 0, 0, 0.5);
+        }	</style>
+</head>
+<body class="light-gray">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link href="bootstrap4-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+	<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+		<a class="navbar-brand" href="#">Online Product Shopping</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+		<ul class="navbar-nav navbar-right">
+			<li class="nav-item">
+				<a href="{{ url_for('login') }}"> Login </a>
+			</li>
+		</ul>
+		</div>
+		</nav>
+		<br><br>
+		<h1>
+			Thanks for shopping with us!
+		</h1>
+	</body>
+</html>

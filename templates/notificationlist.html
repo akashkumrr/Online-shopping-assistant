@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online product shopping</title>
+	<style>
+		.light-gray{
+			background-color: lightgray;
+		}
+
+		ul.navbar-right li a{
+  			color: white;
+		}
+
+		body {font-family: Arial, Helvetica, sans-serif;}
+
+		.float-layout {
+		padding: 5px 5px;
+		float: left;
+		width: 100%;
+		height: auto;
+		box-sizing: border-box;
+		margin: 0;
+		}
+
+		.card-container {
+		overflow: hidden;
+		}
+
+		.card {
+		background-color: dodgerblue;
+		color: black;
+		min-height: 100%; /*replace this it in width: 100%*/
+		width: 50%;
+		float: right;
+		}
+
+		.card-title {
+		font-size: 30px;
+		text-align: center;
+		font-weight: bold;
+		padding-top: 20px;
+		}
+
+		.card-desc {
+		padding: 10px;
+		text-align: left;
+		font-size: 18px;
+		}
+
+		/*add this it*/
+		.card-image {
+		display: flex;
+		}
+		/*-------------*/
+
+		div.card-image img {
+		width: 50%;
+		height: auto;
+		}
+
+		/* Phone Devices Query */
+		@media only screen and (max-width: 37.5em) {
+		div.card-image img {
+			width: 100%;
+			height: auto;
+		}
+		
+		/*add this it*/
+		.card-image {
+			flex-direction: column;
+		}
+		/*----------------------*/
+
+		.card {
+			width: 100%;
+			margin-top: -4px;
+		}
+		}
+	</style>
+</head>
+<body class="light-gray">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link href="bootstrap4-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+	<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+		<a class="navbar-brand" href="#">Online Product Shopping</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			<a class="nav-link" href="{{ url_for('dashboard') }}">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item ">
+			<a class="nav-link" href="{{ url_for('wishlist') }}">Wishlist <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item ">
+			<a class="nav-link" href="{{ url_for('history') }}">History <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item ">
+			<a class="nav-link" href="{{ url_for('notificationlist') }}">Notification List <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+		<ul class="navbar-nav navbar-right">
+			<li class="nav-item">
+				<a href="{{ url_for('logout') }}"> Logout </a>
+			</li>
+		</ul>
+		</div>
+	</nav>
+	<br><br>
+	
+	<h2>Product to be notified of : </h2>
+	<div>
+		{{message}}	
+	</div>
+	<div>
+		<ul>
+		{% for i in range(0,product_dict|length, 6) %}
+		<div class="card-container">
+			<div class="float-layout">
+			  <div class="card-image">
+				<img src="{{ product_dict[i+2] }}" alt="Product Image" style="width:20%">
+				<div class="card">
+					<div class="card-title">Title : {{ product_dict[i] }}</div>
+						<div class="card-desc">
+							<ul>
+								<li>
+									Price : {{ product_dict[i+1] }}
+								</li>
+								<li>
+									<a href="Product Page : {{ product_dict[i+3] }}">Product Page</a>
+								</li>
+								<li> 
+									Website : {{ product_dict[i+4] }} 
+								</li>
+								<li>
+									Past_checked_prices : {{ product_dict[i+5] }}
+								</li>
+										
+								<br>
+							</ul>
+						</div>
+					</div>
+			  	</div>
+			</div>
+		</div>
+		{% endfor %}
+		</ul>
+	</div>
+
+</body>
+</html>

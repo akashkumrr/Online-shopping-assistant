@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Online product shopping</title>
+	<style>
+		.light-gray{
+			background-color: lightgray;
+		}
+
+		ul.navbar-right li a{
+  			color: white;
+		}
+
+		body {font-family: Arial, Helvetica, sans-serif;}
+
+		.float-layout {
+		padding: 5px 5px;
+		float: left;
+		width: 100%;
+		height: auto;
+		box-sizing: border-box;
+		margin: 0;
+		}
+
+		.card-container {
+		overflow: hidden;
+		}
+
+		.card {
+		background-color: dodgerblue;
+		color: black;
+		min-height: 100%; /*replace this it in width: 100%*/
+		width: 50%;
+		float: right;
+		}
+
+		.card-title {
+		font-size: 30px;
+		text-align: center;
+		font-weight: bold;
+		padding-top: 20px;
+		}
+
+		.card-desc {
+		padding: 10px;
+		text-align: left;
+		font-size: 18px;
+		}
+
+		/*add this it*/
+		.card-image {
+		display: flex;
+		}
+		/*-------------*/
+
+		div.card-image img {
+		width: 50%;
+		height: auto;
+		}
+
+		/* Phone Devices Query */
+		@media only screen and (max-width: 37.5em) {
+		div.card-image img {
+			width: 100%;
+			height: auto;
+		}
+		
+		/*add this it*/
+		.card-image {
+			flex-direction: column;
+		}
+		/*----------------------*/
+
+		.card {
+			width: 100%;
+			margin-top: -4px;
+		}
+		}
+	</style>
+</head>
+<body class="light-gray">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link href="bootstrap4-glyphicons/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+	<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+		<a class="navbar-brand" href="#">Online Product Shopping</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			<a class="nav-link" href="{{ url_for('dashboard') }}">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item ">
+			<a class="nav-link" href="{{ url_for('wishlist') }}">Wishlist <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item ">
+			<a class="nav-link" href="{{ url_for('history') }}">History <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item ">
+			<a class="nav-link" href="{{ url_for('notificationlist') }}">Notification List <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+		<ul class="navbar-nav navbar-right">
+			<li class="nav-item">
+				<a href="{{ url_for('logout') }}"> Logout </a>
+			</li>
+		</ul>
+		</div>
+	</nav>
+	<br><br>
+	
+
+
+
+	<form method="POST">
+		<div>
+			<ul>
+			{% for i in range(product_dict.title|length) %}
+
+				<div class="card-container">
+					<div class="float-layout">
+					  <div class="card-image">
+						<img src="{{ product_dict.url[i] }}" alt="Product Image" style="width:20%">
+						<div class="card">
+						  <div class="card-title">{{ product_dict.title[i] }}</div>
+						  <div class="card-desc">
+							<ul>
+								<li>
+									Price : {{ product_dict.price[i] }}
+								</li>
+								<li>
+									<a href="{{ product_dict.hyperlink[i] }}">Product Page</a>
+								</li>
+								<li> 
+									Accuracy : {{ product_dict.accuracy[i] }} 
+								</li>
+								<br>
+								<button name='action' type="Submit" value="{{ product_dict.website[i], product_dict.title[i] }},wishlist">Add to wishlist</button>
+								<button name='action' type="Submit" value="{{ product_dict.website[i], product_dict.title[i] }},buy" >Buy Now</button>
+								<button name='action' type="Submit" value="{{ product_dict.website[i], product_dict.title[i] }},notify">Add to Notification list</button>
+								<br>
+							</ul>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>	
+			{% endfor %}
+			</ul>
+		</div>
+	</form>
+</body>
+</html>
+
+
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+	<style>
+		canvas{
+			margin-left: 30px !important;
+		}
+
+		.row {
+		  border: 5px outset ;
+		  background-color: white;
+		  text-align: center;
+		}
+	</style>
+</head>
+<body >
+	<div class="row" >
+        <div class="col-xs-12">
+            <canvas id="myChart" style=" width:670px; height:570px;"></canvas>
+        </div>
+    </div>
+	
+	<script>
+		var myc = document.getElementById('myChart').getContext('2d');
+		
+		product_dict = {{ product_dict|tojson }};
+		var nameData = [];
+		var priceData = []
+		 j = 0;
+		
+		for (i = 0; i < product_dict.accuracy.length && j < 5; i++) {
+			if(product_dict.accuracy[i] > 0.5) {
+				nameData.push(product_dict.title[i]);
+				priceData.push(parseInt(product_dict.price[i]));
+				j = j+1;
+			}
+		}
+		var anychart = new Chart(myc, {
+			type: 'bar',
+			data:{
+				labels: nameData,
+				datasets: [{
+					label: "Price",
+					data: priceData,
+					backgroundColor: 'yellow',
+					maxBarThickness: 130,
+					minBarLength: 2,
+					barPercentage: 0.5,
+					backgroundColor: [
+						'rgba(255,99,132,0.6)',
+						'rgba(54,162,235,0.6)',
+						'rgba(255,26,86,0.6)',
+						'rgba(75,192,192,0.6)',
+						'rgba(153,102,255,0.6)',
+					],
+					borderWidth:1,
+					borderColor:'#777',
+					hoverBorderWidth:3,
+					hoverBorderColor: '#000'
+				}],
+
+				
+			},
+			options: {
+				responsive: true,
+				scales: {
+					x: {
+						labels: nameData,
+						ticks: {
+							display:false,
+							autoSkip: false,
+							maxRotation: 90,
+							minRotation: 90
+						}
+					},
+					y: {
+						
+						ticks: {
+							font: {
+								size: 20,
+							}
+						}
+						
+					}
+				},
+			}
+			
+		});
+	</script>
+</body>
+</html>

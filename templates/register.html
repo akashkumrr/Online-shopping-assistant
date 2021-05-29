@@ -1,0 +1,19 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<form method="POST">
+		<div>
+			Enter email : <input autofocus type="Email" name="Email">
+			<br>
+			Choose password : <input type="Password" name="Password">
+			<br>
+			<button type="Submit">Create Account</button>
+		</div>
+		<div>
+			{{err}}
+		</div>
+	</form>
+	
+{% endblock %}

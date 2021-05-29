@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div>
+	{{message}}	
+</div>
+<div>
+	<div>
+			<ul>
+			{% for i in range(0,product_dict|length, 5) %}
+				<li> Title : {{ product_dict[i] }} </li>
+				<li> Price : {{ product_dict[i+1] }} </li>
+				<li> Image Url : {{ product_dict[i+2] }} </li>
+				<li> Product Page : {{ product_dict[i+3] }}</li>
+				<li> Website : {{ product_dict[i+4] }}</li>
+				<br>
+			{% endfor %}
+			</ul>
+	</div>
+</div>
+
+
+	
+{% endblock %}
+
+
+
